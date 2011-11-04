@@ -5,9 +5,11 @@
         var el, name;
         el = $(this);
         name = el.attr("name");
-        model.bind("change:" + name, function() {
-          return el.val(model.get(name));
-        });
+        if (el.attr('data-backbone-datalink') !=== "false") {
+          model.bind("change:" + name, function() {
+            return el.val(model.get(name));
+          });
+        };
         return $(this).bind("change", function() {
           var attrs;
           el = $(this);
