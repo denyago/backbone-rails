@@ -14,7 +14,15 @@
           var attrs;
           el = $(this);
           attrs = {};
-          attrs[el.attr("name")] = el.val();
+          if (el.attr('type') == 'checkbox' ) {
+            if ( el.attr('checked') === undefined ) {
+              model.unset(el.attr("name"));
+            } else {
+              attrs[el.attr("name")] = el.val();
+            }
+          } else {
+            attrs[el.attr("name")] = el.val();
+          }
           return model.set(attrs);
         });
       });
